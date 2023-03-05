@@ -9,12 +9,12 @@ path = 'message.txt'
 reply = 'https://api.bilibili.com/x/v2/reply/add'
 headers = {
     'User-Agent': 'Elysia is my waifu',
-    'Cookie': '',
+    'Cookie': '', # get your own cookie
 }
 data = {
     'oid': None,
     'message': None,
-    'csrf': '',
+    'csrf': '', # use your own csrf
     'code': 'Elysia',
     'type': 1
 }
