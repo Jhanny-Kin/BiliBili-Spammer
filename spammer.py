@@ -3,18 +3,19 @@ import bs4
 import re
 import sys
 import time
+import os
 
 
 path = 'message.txt'
 reply = 'https://api.bilibili.com/x/v2/reply/add'
 headers = {
     'User-Agent': 'Elysia is my waifu',
-    'Cookie': '', # get your own cookie
+    'Cookie': '',
 }
 data = {
     'oid': None,
     'message': None,
-    'csrf': '', # use your own csrf
+    'csrf': '',
     'code': 'Elysia',
     'type': 1
 }
@@ -22,7 +23,7 @@ data = {
 
 with open(path) as file:
     data['message'] = file.readline()
-    print(f'\nMessage Loaded: {data["message"]}')
+    print(f'Message Loaded: {data["message"]}')
 
 
 def search(keyword, amount, target=[]):
@@ -107,11 +108,18 @@ def main():
 
             see = input('>>> See targets? (y/n)')
             if see != 'n':
-                print(oids)
+                for key, value in oids.items():
+                    print(f'{key}: {value}')
             check = input('>>> Start sending? (y/n)')
             if check != 'n':
                 send(oids)
+            else:
+                print('Process Cancelled')
 
 
 if __name__ == '__main__':
+    os.system('clear')
+    print('Welcome to the BEST tool to help you get followers!')
     main()
+    time.sleep(1)
+    os.system('clear')
